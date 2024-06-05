@@ -5,9 +5,211 @@
         <link rel="manifest" href="manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Placeholder</title>
+        <style>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html, body {
+                background:black;
+                color:white;
+                font-family: sans-serif;
+                min-height:100vh;
+                -webkit-font-smoothing:antialiased;
+            }
+
+            .container {
+                display:flex;
+                padding:150px 10% 100px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height:100vh;
+                max-width:900px;
+                margin:0 auto;
+                gap:20px;
+            }
+
+            .scroller {
+                display: flex;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+                
+            }
+
+            .scroller span {
+                display:block;
+                animation: scroll 10s linear infinite;
+            }
+
+            @keyframes scroll {
+                0% {
+                    transform:translateX(0%)
+                }
+                100% {
+                    transform:translateX(-100%)
+                }
+            }
+
+            .top {
+                position:fixed;
+                top:0;
+                padding:30px 0;
+            }
+
+            .bottom {
+                position:fixed;
+                bottom:0;
+                padding:30px 0;
+            }
+
+            .btn {
+                padding:20px 10px;
+                border-radius: 10px;
+                background:#3426f5;
+                width:100%;
+                text-align: center;
+                color:black;
+                font-weight: bold;
+            }
+
+            .img-wrapper {
+                width:100%;
+                border-radius: 1000px;
+                background-image: url(familymoonphoto1.jpg);
+                background:cover;
+                aspect-ratio: 1 / 1;
+                background-position: center;
+            }
+
+            ::backdrop {
+                background:#000;
+                opacity: 0.75;
+            }
+
+        </style>
+
     </head>
     <body>
-        This is a test
-    </body>
+        <div class="scroller top">
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+        </div>
 
+        <div class="container">
+
+
+            <div class="img-wrapper"></div>
+        
+        
+            <div class="btn">DROP OFF</div>
+
+
+        </div>
+
+        <div class="scroller bottom">
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+        </div>
+
+        <dialog>
+            <button autofocus>Close</button>
+            <div id="form"></div>
+        </dialog>
+
+        <div id="cnv"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js" integrity="sha512-d6sc8kbZEtA2LwB9m/ck0FhvyUwVfdmvTeyJRprmj7Wg9wRFtHDIpr6qk4g/y3Ix3O9I6KHIv6SGu9f7RaP1Gw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+
+            const dialog = document.querySelector("dialog");
+            const showButton = document.querySelector(".btn");
+            const closeButton = document.querySelector("dialog button");
+
+            // "Show the dialog" button opens the dialog modally
+            showButton.addEventListener("click", () => {
+                dialog.showModal();
+            });
+
+            // "Close" button closes the dialog
+            closeButton.addEventListener("click", () => {
+                dialog.close();
+            });
+
+            let img;
+            let w,h
+            let bk
+            let shadow
+            let overlay
+
+            function preload() {
+                bk = loadImage('111.webp')
+                shadow = loadImage('shadow2.png')
+                overlay = loadImage('overlay.png')
+            }
+
+            function setup() {
+                let cnv = createCanvas(400,400)
+                cnv.parent('cnv')
+                input = createFileInput(handleFile);
+                input.parent('form')
+                imageMode(CENTER)
+                rectMode(CENTER)
+                let button = createButton('Save');
+                button.mousePressed(makeImage);
+            }
+
+            function draw() {
+            image(bk, width/2,height/2,width, height)
+            if (img) {
+                push()
+                translate(width/4+20, height/4+10)
+                rotate(0.3)
+                image(shadow,-1,7, w+15,h+7);
+                rotate(-0.1)
+                shearX(-0.1);
+                image(img, 0,0, w,h);
+                image(overlay, 0,0, w,h);
+                // filter(GRAY)
+                pop()
+            }
+            }
+
+            function handleFile(file) {
+            if (file.type === 'image') {
+                img = createImg(file.data, '', true, function() {
+                    let r =  img.height/img.width
+                    w = 120;
+                    h = w*r;
+                    dialog.close();
+                });
+                img.hide();
+            } else {
+                img = null;
+            }
+            }
+
+            function makeImage() {
+                saveCanvas();
+            }
+
+
+
+        </script>
+    </body>
 </html>
