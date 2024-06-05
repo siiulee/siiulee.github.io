@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 
     <head>
@@ -17,11 +17,15 @@
                 font-family: sans-serif;
                 min-height:100vh;
                 -webkit-font-smoothing:antialiased;
+                width:100vw;
+                height:100vh;
+                overflow:hidden;
+                margin:0;
             }
 
             .container {
                 display:flex;
-                padding:150px 10% 100px;
+                padding:100px 10% 100px;
                 flex-direction: column;
                 align-items: center;
                 justify-content: space-between;
@@ -64,7 +68,7 @@
                 padding:30px 0;
             }
 
-            .btn {
+            .btn, button {
                 padding:20px 10px;
                 border-radius: 10px;
                 background:#3426f5;
@@ -72,10 +76,18 @@
                 text-align: center;
                 color:black;
                 font-weight: bold;
+                -webkit-appearence:none;
+                outline:none;
+                border:0;
+                text-transform: uppercase;
+                min-width:200px;
             }
 
             .img-wrapper {
-                width:100%;
+                width:80vw !important;
+                height:80vw !important;
+                max-width:400px !important;
+                max-height:400px !important;
                 border-radius: 1000px;
                 background-image: url(familymoonphoto1.jpg);
                 background:cover;
@@ -86,6 +98,17 @@
             ::backdrop {
                 background:#000;
                 opacity: 0.75;
+            }
+
+            .hide {
+                display:none;
+            }
+
+            canvas {
+                width:80vw !important;
+                height:80vw !important;
+                max-width:400px !important;
+                max-height:400px !important;
             }
 
         </style>
@@ -105,7 +128,7 @@
             <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
         </div>
 
-        <div class="container">
+        <div class="container page1">
 
 
             <div class="img-wrapper"></div>
@@ -114,6 +137,11 @@
             <div class="btn">DROP OFF</div>
 
 
+        </div>
+
+        <div class="container page2 hide">
+            <div id="cnv"></div>
+            <div id="savebtn"></div>
         </div>
 
         <div class="scroller bottom">
@@ -132,7 +160,7 @@
             <div id="form"></div>
         </dialog>
 
-        <div id="cnv"></div>
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js" integrity="sha512-d6sc8kbZEtA2LwB9m/ck0FhvyUwVfdmvTeyJRprmj7Wg9wRFtHDIpr6qk4g/y3Ix3O9I6KHIv6SGu9f7RaP1Gw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
@@ -140,6 +168,8 @@
             const dialog = document.querySelector("dialog");
             const showButton = document.querySelector(".btn");
             const closeButton = document.querySelector("dialog button");
+            const p1 = document.querySelector('.page1')
+            const p2 = document.querySelector('.page2')
 
             // "Show the dialog" button opens the dialog modally
             showButton.addEventListener("click", () => {
@@ -171,6 +201,7 @@
                 imageMode(CENTER)
                 rectMode(CENTER)
                 let button = createButton('Save');
+                button.parent('savebtn')
                 button.mousePressed(makeImage);
             }
 
@@ -197,6 +228,8 @@
                     w = 120;
                     h = w*r;
                     dialog.close();
+                    p1.classList.add('hide')
+                    p2.classList.remove('hide')
                 });
                 img.hide();
             } else {
