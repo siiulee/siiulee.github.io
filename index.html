@@ -5,6 +5,7 @@
         <link rel="manifest" href="manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Placeholder</title>
+        <meta charset="UTF-8">
         <style>
 
             * {
@@ -68,7 +69,7 @@
                 padding:30px 0;
             }
 
-            .btn, button {
+            .btn, button, label {
                 padding:20px 10px;
                 border-radius: 10px;
                 background:#3426f5;
@@ -109,6 +110,32 @@
                 height:80vw !important;
                 max-width:400px !important;
                 max-height:400px !important;
+            }
+
+            input[type="file"] {
+                display: none;
+            }
+            label {
+                display: inline-block;
+                cursor: pointer;
+            }
+
+            dialog {
+                outline:none;
+                border:0;
+                border-radius:5px;
+                
+            }
+
+            .close {
+              
+                margin-top:20px;
+                background:transparent;
+                text-decoration: underline;
+                padding:0;
+                color:#333;
+                text-transform: none;
+                font-weight:normal
             }
 
         </style>
@@ -156,8 +183,11 @@
         </div>
 
         <dialog>
-            <button autofocus>Close</button>
-            <div id="form"></div>
+            <div class="dialog-inner">
+                
+                <div id="form"></div>
+                <button autofocus class="close">Cancel</button>
+            </div>
         </dialog>
 
         
@@ -198,6 +228,11 @@
                 cnv.parent('cnv')
                 input = createFileInput(handleFile);
                 input.parent('form')
+                input.id('file-upload')
+                input.attribute("accept","image/*")
+                let label = createElement('label', 'Choose Image');
+                label.parent('form')
+                label.attribute('for', 'file-upload')
                 imageMode(CENTER)
                 rectMode(CENTER)
                 let button = createButton('Save');
