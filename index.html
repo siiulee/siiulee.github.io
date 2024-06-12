@@ -4,7 +4,7 @@
     <head>
         <link rel="manifest" href="manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Placeholder</title>
+        <title>Moon Garden</title>
         <meta charset="UTF-8">
         <style>
 
@@ -18,9 +18,9 @@
                 font-family: sans-serif;
                 min-height:100vh;
                 -webkit-font-smoothing:antialiased;
-                width:100vw;
-                height:100vh;
-                overflow:hidden;
+                min-width:100vw;
+                min-height:100vh;
+                /* overflow:hidden; */
                 margin:0;
             }
 
@@ -29,9 +29,9 @@
                 padding:100px 10% 100px;
                 flex-direction: column;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
                 height:100vh;
-                max-width:900px;
+                max-width:800px;
                 margin:0 auto;
                 gap:20px;
             }
@@ -273,27 +273,27 @@
                     });
                     img.hide();
 
-                    var xhr = new XMLHttpRequest();
-                    xhr.withCredentials = false;
-                    xhr.addEventListener('readystatechange', function() {
-                        if (this.readyState === 4) {
-                            console.log(this.responseText)
-                            var data = JSON.parse(this.responseText);
-                            console.log(data);
-                        }
-                    });
-                    var data = new FormData(form)
-                    console.log(data)
-                    var method = 'POST';
-                    xhr.open(method, url);
-                    xhr.setRequestHeader("Accept", "application/json");
-                    xhr.send(data);
                 } else {
                     img = null;
                 }
             }
 
             function makeImage() {
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = false;
+                xhr.addEventListener('readystatechange', function() {
+                    if (this.readyState === 4) {
+                        console.log(this.responseText)
+                        var data = JSON.parse(this.responseText);
+                        console.log(data);
+                    }
+                });
+                var data = new FormData(form)
+                console.log(data)
+                var method = 'POST';
+                xhr.open(method, url);
+                xhr.setRequestHeader("Accept", "application/json");
+                xhr.send(data);
                 saveCanvas();
             }
 
