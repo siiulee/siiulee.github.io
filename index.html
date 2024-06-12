@@ -185,7 +185,8 @@
         <dialog>
             <div class="dialog-inner">
                 
-                <div id="form"></div>
+                <form id="form">
+                </form>
                 <button autofocus class="close">Cancel</button>
             </div>
         </dialog>
@@ -241,42 +242,57 @@
             }
 
             function draw() {
-            image(bk, width/2,height/2,width, height)
-            if (img) {
-                push()
-                translate(width/4+20, height/4+10)
-                rotate(0.3)
-                image(shadow,-1,7, w+15,h+7);
-                rotate(-0.1)
-                shearX(-0.1);
-                image(img, 0,0, w,h);
-                image(overlay, 0,0, w,h);
-                // filter(GRAY)
-                pop()
-            }
+                image(bk, width/2,height/2,width, height)
+                if (img) {
+                    push()
+                    translate(width/4+20, height/4+10)
+                    rotate(0.3)
+                    image(shadow,-1,7, w+15,h+7);
+                    rotate(-0.1)
+                    shearX(-0.1);
+                    image(img, 0,0, w,h);
+                    image(overlay, 0,0, w,h);
+                    // filter(GRAY)
+                    pop()
+                }
             }
 
+            const form = document.getElementById('form')
+            const url = 'http://samtripp.com/moon/upload.php'
+
             function handleFile(file) {
-            if (file.type === 'image') {
-                img = createImg(file.data, '', true, function() {
-                    let r =  img.height/img.width
-                    w = 120;
-                    h = w*r;
-                    dialog.close();
-                    p1.classList.add('hide')
-                    p2.classList.remove('hide')
-                });
-                img.hide();
-            } else {
-                img = null;
-            }
+                if (file.type === 'image') {
+                    img = createImg(file.data, '', true, function() {
+                        let r =  img.height/img.width
+                        w = 120;
+                        h = w*r;
+                        dialog.close();
+                        p1.classList.add('hide')
+                        p2.classList.remove('hide')
+                    });
+                    img.hide();
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.withCredentials = false;
+                    xhr.addEventListener('readystatechange', function() {
+                        if (this.readyState === 4) {
+                            var data = JSON.parse(this.responseText);
+                            console.log(data);
+                        }
+                    });
+                    var data = new FormData(form)
+                    var method = 'POST';
+                    xhr.open(method, url);
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.send(data);
+                } else {
+                    img = null;
+                }
             }
 
             function makeImage() {
                 saveCanvas();
             }
-
-
 
         </script>
     </body>
