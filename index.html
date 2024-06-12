@@ -271,6 +271,23 @@
                         dialog.close();
                         p1.classList.add('hide')
                         p2.classList.remove('hide')
+                        var xhr = new XMLHttpRequest();
+                        xhr.withCredentials = false;
+                        xhr.addEventListener('readystatechange', function() {
+                            if (this.readyState === 4) {
+                                console.log(this.responseText)
+                                var data = JSON.parse(this.responseText);
+                                console.log(data);
+                            } else {
+                                console.log(this)
+                            }
+                        });
+                        var data = new FormData(form)
+                        console.log(data)
+                        var method = 'POST';
+                        xhr.open(method, url);
+                        xhr.setRequestHeader("Accept", "application/json");
+                        xhr.send(data);
                     });
                     img.hide();
 
@@ -279,24 +296,30 @@
                 }
             }
 
+            function imageResize(file) {
+
+                
+            }
+
             function makeImage() {
-                var xhr = new XMLHttpRequest();
-                xhr.withCredentials = false;
-                xhr.addEventListener('readystatechange', function() {
-                    if (this.readyState === 4) {
-                        console.log(this.responseText)
-                        var data = JSON.parse(this.responseText);
-                        console.log(data);
-                    } else {
-                        console.log(this)
-                    }
-                });
-                var data = new FormData(form)
-                console.log(data)
-                var method = 'POST';
-                xhr.open(method, url);
-                xhr.setRequestHeader("Accept", "application/json");
-                xhr.send(data);
+                // var xhr = new XMLHttpRequest();
+                // xhr.withCredentials = false;
+                // xhr.addEventListener('readystatechange', function() {
+                //     if (this.readyState === 4) {
+                //         console.log(this.responseText)
+                //         var data = JSON.parse(this.responseText);
+                //         console.log(data);
+                //     } else {
+                //         console.log(this)
+                //     }
+                // });
+                // var data = new FormData(form)
+                // console.log(data)
+                // var method = 'POST';
+                // xhr.open(method, url);
+                // xhr.setRequestHeader("Accept", "application/json");
+                // xhr.send(data);
+                
                 saveCanvas();
             }
 
