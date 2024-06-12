@@ -260,7 +260,7 @@
             }
 
             const form = document.getElementById('form')
-            const url = 'https://samtripp.com/moon/upload.php'
+            const url = 'https://samtripp.com/moon/upload2.php'
 
             function handleFile(file) {
                 if (file.type === 'image') {
@@ -271,35 +271,40 @@
                         dialog.close();
                         p1.classList.add('hide')
                         p2.classList.remove('hide')
-                        var xhr = new XMLHttpRequest();
-                        xhr.withCredentials = false;
-                        xhr.addEventListener('readystatechange', function() {
-                            if (this.readyState === 4) {
-                                console.log(this.responseText)
-                                var data = JSON.parse(this.responseText);
-                                console.log(data);
-                            } else {
-                                console.log(this)
-                            }
-                        });
-                        var data = new FormData(form)
-                        console.log(data)
-                        var method = 'POST';
-                        xhr.open(method, url);
-                        xhr.setRequestHeader("Accept", "application/json");
-                        xhr.send(data);
+                        imageResize(img)
                     });
                     img.hide();
-
                 } else {
                     img = null;
                 }
             }
 
-            function imageResize(file) {
-
-                
-            }
+            function imageResize(img) {
+                let r =  img.height/img.width
+                let w2 = 200;
+                let h2 = w2*r;
+                let tmp = createGraphics(w2,h2)
+                tmp.image(img, 0,0, w2, h2)
+                // saveCanvas(tmp);
+                tmp.loadPixels();
+                let b64 =  tmp.canvas.toDataURL();
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = false;
+                xhr.addEventListener('readystatechange', function() {
+                    if (this.readyState === 4) {
+                        console.log(this.responseText)
+                        var data = JSON.parse(this.responseText);
+                        console.log(data);
+                    } else {
+                        console.log(this)
+                    }
+                });
+               
+                var method = 'POST';
+                xhr.open(method, url);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send('img='+encodeURIComponent(b64));
+            }   
 
             function makeImage() {
                 // var xhr = new XMLHttpRequest();
