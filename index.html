@@ -84,6 +84,7 @@
                 border:0;
                 text-transform: uppercase;
                 min-width:200px;
+                font-size:16px;
             }
 
             .img-wrapper {
@@ -92,7 +93,7 @@
                 max-width:400px !important;
                 max-height:400px !important;
                 border-radius: 1000px;
-                background-image: url(familymoonphoto1.jpg);
+                background-image: url(fam.jpg);
                 background:cover;
                 aspect-ratio: 1 / 1;
                 background-position: center;
@@ -129,7 +130,7 @@
                 
             }
 
-            .close {
+            .close, .skip, .links button {
               
                 margin-top:20px;
                 background:transparent;
@@ -140,21 +141,57 @@
                 font-weight:normal
             }
 
+            .skip, .links button, .page4 p {
+                color:#3426f5;
+            }
+
+            .links {
+                display:flex;
+                justify-content:space-between;
+            }
+
+            .page3 img {
+                width:100%;
+            }
+
+            .page5 p, .page5 a {
+                margin: 0;
+                color:#3426f5;
+            }
+
+            .page5 {
+                align-items: start;
+            }
+
+            .back1, .back2 {
+                position:fixed;
+                top:20px;
+                left:20px;
+                width:30px;
+                height:30px
+            }
+
+            .back1 svg, .back2 svg {
+                width:100%;
+            }
+
         </style>
 
     </head>
     <body>
+        <div id="p5_loading"></div>
         <div class="scroller top">
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
-            <span>MOON GARDEN //////// ON THE MOON ////////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
         </div>
 
         <div class="container page1">
@@ -171,17 +208,74 @@
         <div class="container page2 hide">
             <div id="cnv"></div>
             <div id="savebtn"></div>
+            <button class="skip">Skip</button>
+        </div>
+
+        <div class="container page3 hide">
+            <img src="the-rug-.jpg">
+            <div class="links">
+                <button class="description">Description</button>
+                <button class="contact">Contact</button>
+            </div>
+        </div>
+
+        <div class="container page4 hide">
+            <div class="back1">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.75 47.75">
+                    <defs>
+                        <style>
+                        .cls-1 {
+                            fill: none;
+                            stroke: #3426f5;
+                            stroke-miterlimit: 10;
+                            stroke-width: 3;
+                        }
+                        </style>
+                    </defs>
+                    <circle class="cls-1" cx="23.87" cy="23.87" r="23.37"/>
+                    <line class="cls-1" x1="7.35" y1="7.35" x2="40.4" y2="40.4"/>
+                    <line class="cls-1" x1="40.37" y1="7.38" x2="7.38" y2="40.37"/>
+                </svg>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin fringilla nisi ut vulputate. Nullam non odio at felis lobortis congue. In fermentum ornare arcu, et laoreet magna accumsan in. Integer eget feugiat augue. Fusce pretium suscipit suscipit. Vivamus interdum gravida ipsum, eu placerat neque tempus a. Vivamus id erat at ligula pellentesque consectetur quis eget lorem. Nam faucibus condimentum metus, vel vulputate ipsum congue ac.</p>
+        </div>
+
+        <div class="container page5 hide">
+            <div class="back2">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.75 47.75">
+                    <defs>
+                        <style>
+                        .cls-1 {
+                            fill: none;
+                            stroke: #3426f5;
+                            stroke-miterlimit: 10;
+                            stroke-width: 3;
+                        }
+                        </style>
+                    </defs>
+                    <circle class="cls-1" cx="23.87" cy="23.87" r="23.37"/>
+                    <line class="cls-1" x1="7.35" y1="7.35" x2="40.4" y2="40.4"/>
+                    <line class="cls-1" x1="40.37" y1="7.38" x2="7.38" y2="40.37"/>
+                </svg>
+            </div>
+            <p>Name: Siiu Lee</p>
+            <p>Phone: <a href="tel:+447440423140">+44 7440 423 140</a></p>
+            <p>Instagram: <a href="http://instagram.com/0.3.00.am" target="_blank">@0.3.00.am</a></p>
+            <p>Email: <a href="mailto:slee023@campus.goldsmiths.ac.uk" target="_blank">slee023@campus.goldsmiths.ac.uk</a></p>
         </div>
 
         <div class="scroller bottom">
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
-            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON ////////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
+            <span>DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
         </div>
 
         <dialog>
@@ -201,8 +295,18 @@
             const dialog = document.querySelector("dialog");
             const showButton = document.querySelector(".btn");
             const closeButton = document.querySelector("dialog button");
+            const skipButton = document.querySelector(".skip");
+            const descriptionButton = document.querySelector(".description");
+            const contactButton = document.querySelector(".contact");
             const p1 = document.querySelector('.page1')
             const p2 = document.querySelector('.page2')
+            const p3 = document.querySelector('.page3')
+            const p4 = document.querySelector('.page4')
+            const p5 = document.querySelector('.page5')
+            const _top = document.querySelector('.top')
+            const _bottom = document.querySelector('.bottom')
+            const backButton1 = document.querySelector('.back1')
+            const backButton2 = document.querySelector('.back2')
 
             // "Show the dialog" button opens the dialog modally
             showButton.addEventListener("click", () => {
@@ -212,6 +316,32 @@
             // "Close" button closes the dialog
             closeButton.addEventListener("click", () => {
                 dialog.close();
+            });
+
+            skipButton.addEventListener("click", () => {
+                p2.classList.add('hide')
+                p3.classList.remove('hide')
+            });
+
+            descriptionButton.addEventListener("click", () => {
+                p3.classList.add('hide')
+                p4.classList.remove('hide')
+            });
+
+            contactButton.addEventListener("click", () => {
+                p3.classList.add('hide')
+                p5.classList.remove('hide')
+            });
+
+            backButton1.addEventListener("click", () => {
+                p4.classList.add('hide')
+                p5.classList.add('hide')
+                p3.classList.remove('hide')
+            });
+            backButton2.addEventListener("click", () => {
+                p4.classList.add('hide')
+                p5.classList.add('hide')
+                p3.classList.remove('hide')
             });
 
             let img;
@@ -275,6 +405,8 @@
                         imageResize(img)
                     });
                     img.hide();
+                    _top.style.display = 'none'
+                    _bottom.style.display = 'none'
                 } else {
                     img = null;
                 }
