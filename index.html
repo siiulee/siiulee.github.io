@@ -74,7 +74,7 @@
             .btn, button, label {
                 padding:20px 10px;
                 border-radius: 10px;
-                background:#3426f5;
+                background:#3c0bff;
                 width:100%;
                 text-align: center;
                 color:black;
@@ -142,7 +142,7 @@
             }
 
             .skip, .links button, .page4 p {
-                color:#3426f5;
+                color:#3c0bff;
             }
 
             .links {
@@ -156,7 +156,7 @@
 
             .page5 p, .page5 a {
                 margin: 0;
-                color:#3426f5;
+                color:white;
             }
 
             .page5 {
@@ -173,6 +173,47 @@
 
             .back1 svg, .back2 svg {
                 width:100%;
+            }
+
+            .page1 {
+                gap:60px;
+            }
+
+            .page2 button{
+               margin-top:20px;
+            }
+
+            .contact-inner {
+                background:#3c0bff;
+                aspect-ratio: 1/1;
+                border-radius: 10000px;
+                color:white !important;
+                width:100%;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                padding:30px;
+                
+            }
+
+            .contact-inner a, .contact-inner a:visited {
+                color:white;
+            }
+
+            .page5 {
+                align-items: center;
+                justify-content: center;
+            }
+
+            .description-inner {
+                background:white;
+                color:black;
+                padding:10px;
+                border:solid 3px #3c0bff;
+            }
+
+            .page4 {
+                padding:100px 10px 100px;
             }
 
         </style>
@@ -237,7 +278,15 @@
                     <line class="cls-1" x1="40.37" y1="7.38" x2="7.38" y2="40.37"/>
                 </svg>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin fringilla nisi ut vulputate. Nullam non odio at felis lobortis congue. In fermentum ornare arcu, et laoreet magna accumsan in. Integer eget feugiat augue. Fusce pretium suscipit suscipit. Vivamus interdum gravida ipsum, eu placerat neque tempus a. Vivamus id erat at ligula pellentesque consectetur quis eget lorem. Nam faucibus condimentum metus, vel vulputate ipsum congue ac.</p>
+            <div class="description-inner">
+                <p>This project emphasises design as a tool for articulating our humanity. The design explores our collective dreams and struggles, seeking to understand our place in an unstable world through the expression of archetypes. Our cultural, social, political, and economic challenges ultimately aim at understanding humanity. This involves discovering the essential yet often overlooked human elements in our daily lives.</p>
+
+                <p>Inspired by a personal experience with the Moon at 3 AM, the project questions the lost spaces and times for regeneration in modern life. By analysing the Moon's archetypal symbolism and cultural history, the project aims to rediscover elements of regeneration and capture the essence of human existence. It seeks to design spaces for regeneration within the context of one's daily life and inner world, without escaping environmental influences.</p>
+
+                <p>Drawing inspiration from the 'Chaharbagh' concept of Persian gardens, which symbolised paradise, and the photograph of the Duke family on the Moon (1972), the project reinterprets the moon experience into personal spaces through the Moon Garden Rug. The Moon Garden Rug reimagines the sensory experiences of the outside world, integrating physical reality and digital virtuality into personal space.</p>
+
+                <p>Awakening individual senses, capturing the essence of human existence and moments, and considering what traces should be left for the inner space of the future—these questions form the core of this project.</p>
+            </div>
         </div>
 
         <div class="container page5 hide">
@@ -258,10 +307,12 @@
                     <line class="cls-1" x1="40.37" y1="7.38" x2="7.38" y2="40.37"/>
                 </svg>
             </div>
-            <p>Name: Siiu Lee</p>
-            <p>Phone: <a href="tel:+447440423140">+44 7440 423 140</a></p>
-            <p>Instagram: <a href="http://instagram.com/0.3.00.am" target="_blank">@0.3.00.am</a></p>
-            <p>Email: <a href="mailto:slee023@campus.goldsmiths.ac.uk" target="_blank">slee023@campus.goldsmiths.ac.uk</a></p>
+            <div class="contact-inner">
+                <p>Name: Siiu Lee</p>
+                <p>Phone: <a href="tel:+447440423140">+44 7440 423 140</a></p>
+                <p>Instagram: <a href="http://instagram.com/0.3.00.am" target="_blank">@0.3.00.am</a></p>
+                <p>Email: <a href="mailto:saeeun030@gmail.com" target="_blank">saeeun030@gmail.com</a></p>
+            </div>
         </div>
 
         <div class="scroller bottom">
@@ -378,7 +429,7 @@
                 image(bk, width/2,height/2,width, height)
                 if (img) {
                     push()
-                    translate(width/4+20, height/4+10)
+                    translate(width/4+35, height/4+35)
                     rotate(0.3)
                     image(shadow,-1,7, w+15,h+7);
                     rotate(-0.1)
@@ -397,7 +448,7 @@
                 if (file.type === 'image') {
                     img = createImg(file.data, '', true, function() {
                         let r =  img.height/img.width
-                        w = 120;
+                        w = 140;
                         h = w*r;
                         dialog.close();
                         p1.classList.add('hide')
