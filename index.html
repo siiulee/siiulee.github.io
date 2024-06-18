@@ -89,13 +89,12 @@
 
             .img-wrapper {
                 width:80vw !important;
-                height:80vw !important;
                 max-width:400px !important;
-                max-height:400px !important;
                 border-radius: 1000px;
                 background-image: url(fam.jpg);
-                background:cover;
+                background-size:cover;
                 aspect-ratio: 1 / 1;
+                flex-shrink: 0;
                 background-position: center;
             }
 
@@ -130,7 +129,7 @@
                 
             }
 
-            .close, .skip, .links button {
+            .close, .skip, .links button, .info {
               
                 margin-top:20px;
                 background:transparent;
@@ -141,7 +140,7 @@
                 font-weight:normal
             }
 
-            .skip, .links button, .page4 p {
+            .skip, .links button, .page4 p, .info {
                 color:#3c0bff;
             }
 
@@ -163,7 +162,7 @@
                 align-items: start;
             }
 
-            .back1, .back2 {
+            .back1, .back2, .back0 {
                 position:fixed;
                 top:20px;
                 left:20px;
@@ -175,8 +174,8 @@
                 width:100%;
             }
 
-            .page1 {
-                gap:60px;
+            .page1 .btn {
+                margin-top:30px;
             }
 
             .page2 button{
@@ -217,6 +216,19 @@
                 justify-content: start;
             }
 
+            .info-text {
+                position:fixed;
+                padding:100px 10px;
+                width:100%;
+                height:100%;
+                overflow:scroll;
+            }
+
+            .info-text .description-inner{
+                min-width:100%;
+                min-height:100%;
+            }
+
         </style>
         
      
@@ -243,6 +255,31 @@
             <span>MOON GARDEN /////// DROP OFF WHAT YOU WANT TO PRESERVE ON THE MOON GARDEN //////&nbsp;</span>
         </div>
 
+
+        <div class="info-text hide">
+            <div class="back0">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.75 47.75">
+                    <defs>
+                        <style>
+                        .cls-1 {
+                            fill: none;
+                            stroke: #3426f5;
+                            stroke-miterlimit: 10;
+                            stroke-width: 3;
+                        }
+                        </style>
+                    </defs>
+                    <circle class="cls-1" cx="23.87" cy="23.87" r="23.37"/>
+                    <line class="cls-1" x1="7.35" y1="7.35" x2="40.4" y2="40.4"/>
+                    <line class="cls-1" x1="40.37" y1="7.38" x2="7.38" y2="40.37"/>
+                </svg>
+            </div>
+            <div class="description-inner">
+                <p>Imagine an app that encapsulates your cherished moments on the surface of the Moon, preserving them for eternity. Beyond the constraints of physical space, you can place a photograph of your chosen moment on the Moon, granting it a sense of immortality and storing it permanently in the Moon Garden. This design captures simple and human moments while also purifying and rejuvenating one's inner space. It merges the tangible and intangible into a unique and enduring blend of virtual and real spaces, serving as an alternative for those situations where viewing the Moon directly is difficult.</p>
+                <p>By capturing and eternally preserving these moments, the Moon Garden app redefines the essence of memory, allowing us to cherish significant life events across time and space.</p>
+            </div>
+        </div>
+
         <div class="container page1">
 
 
@@ -250,7 +287,7 @@
         
         
             <div class="btn">DROP OFF</div>
-
+            <button class="info">Info</button>
 
         </div>
 
@@ -357,6 +394,7 @@
             const skipButton = document.querySelector(".skip");
             const descriptionButton = document.querySelector(".description");
             const contactButton = document.querySelector(".contact");
+            const info = document.querySelector(".info-text");
             const p1 = document.querySelector('.page1')
             const p2 = document.querySelector('.page2')
             const p3 = document.querySelector('.page3')
@@ -366,6 +404,9 @@
             const _bottom = document.querySelector('.bottom')
             const backButton1 = document.querySelector('.back1')
             const backButton2 = document.querySelector('.back2')
+            const backButton0 = document.querySelector('.back0')
+
+            const infoButton = document.querySelector('.info')
 
             // "Show the dialog" button opens the dialog modally
             showButton.addEventListener("click", () => {
@@ -401,6 +442,18 @@
                 p4.classList.add('hide')
                 p5.classList.add('hide')
                 p3.classList.remove('hide')
+            });
+
+            infoButton.addEventListener("click", () => {
+                info.classList.remove('hide')
+                _top.style.display = 'none'
+                _bottom.style.display = 'none'
+            });
+
+            backButton0.addEventListener("click", () => {
+                info.classList.add('hide')
+                _top.style.display = 'flex'
+                _bottom.style.display = 'flex'
             });
 
             let img;
